@@ -12,6 +12,18 @@ function writeFile($file, $data) {
     }
 }
 
+function full_url($s)
+{
+    $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+    $sp = strtolower($s['SERVER_PROTOCOL']);
+    $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+    $port = $s['SERVER_PORT'];
+    $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
+    $host = isset($s['HTTP_X_FORWARDED_HOST']) ? $s['HTTP_X_FORWARDED_HOST'] : isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : $s['SERVER_NAME'];
+    return $protocol . '://' . $host . $port . $s['REQUEST_URI'];
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // new
     $json_input = file_get_contents("php://input");
     $survey = json_decode($json_input);
@@ -21,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // new
         .'_'. $survey->projectName
         .'_'. $survey->date;
     $filename = preg_replace('/[^a-zA-Z0-9_-]/', '_', $filename);
-    $survey->surveyURI = 'http://' . apache_getenv("HTTP_HOST") . apache_getenv("REQUEST_URI") . "?surveyid=$filename";
+    $survey->surveyURI = full_url($_SERVER) . "?surveyid=$filename";
 
     writeFile($DATA_DIR . '/' . $filename, json_encode($survey));
     http_response_code(201);
