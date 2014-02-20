@@ -5,7 +5,7 @@ global_question_data = [
              {
                  'id' : 'customer',
                  'title' : 'Kunde',
-                 'description': 'Der Kunde für das Projekt. \'Intern\' für interne Projekte. \'Product\' für Produkte. ',
+                 'description': 'Der Kunde f\u00FCr das Projekt. \'Intern\' f\u00FCr interne Projekte. \'Product\' f\u00FCr Produkte. ',
                  'type' : 'string',
              },
              {

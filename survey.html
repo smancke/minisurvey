@@ -2,6 +2,7 @@
 <html ng-app="survey">
   <head>
     <title>Survey Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="lib/bootstrap.css" rel="stylesheet" media="screen"/>
     <script src="lib/angular.min.js"></script>
@@ -11,20 +12,20 @@
   <body>
 
     <div class="container" ng-controller="SurveyCtrl">
-      <h1>Umfrage zur Software Qualit‰t</h1>
+      <h1>Umfrage zur Software Qualit√§t</h1>
       <blockquote>
-        <p>"Nicht alles was man z‰hlen kann, z‰hlt auch
-          <br>und nicht alles was z‰hlt, kann man z‰hlen." Albert Einstein</p>
+        <p>"Nicht alles was man z√§hlen kann, z√§hlt auch
+          <br>und nicht alles was z√§hlt, kann man z√§hlen." Albert Einstein</p>
       </blockquote>
 
       <form class="form-horizontal" role="form">
         <div style="width: 800px;">
             <a href="index.html"
                class="btn btn-default btn-md">
-              <span class="glyphicon glyphicon-chevron-left"></span> ‹bersicht
+              <span class="glyphicon glyphicon-chevron-left"></span> √úbersicht
             </a>
             <button ng-click="save()" type="button" class="btn btn-default btn-md">
-              <span ng-if="surveyModified" class="glyphicon glyphicon-floppy-save"></span>
+              <span ng-if="surveyModified" class="glyphicon glyphicon-floppy-save" style="color: red;"></span>
               <span ng-if="! surveyModified" class="glyphicon glyphicon-floppy-saved" style="color: green;"></span>
               Speichern
           </button>
