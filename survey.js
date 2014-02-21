@@ -21,7 +21,7 @@ survey.directive('contenteditable', function() {
             /**
              * handling the maxlength parameter
              */
-            elm.on('keypress', function(event) {
+            elm.bind('keyup', function(event) {
                 scope.$apply(function() {
                     ctrl.$setViewValue(elm.html());
                 });
