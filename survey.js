@@ -15,7 +15,7 @@ survey.directive('contenteditable', function() {
             
             // model -> view
             ctrl.$render = function() {
-                elm.text(ctrl.$viewValue);
+                elm.html(ctrl.$viewValue);
             };
 
             /**
