@@ -4,8 +4,13 @@
     <title>Survey Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="lib/bootstrap.css" rel="stylesheet" media="screen"/>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <script src="lib/angular.min.js"></script>
+
     <script src="questionData.json"></script>
     <script src="survey.js"></script>
   </head>
@@ -17,67 +22,87 @@
         <p>"Nicht alles was man zählen kann, zählt auch
           <br>und nicht alles was zählt, kann man zählen." Albert Einstein</p>
       </blockquote>
+      
+      <div style="width: 800px;">
+        <a href="index.html"
+           class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-chevron-left"></span> Übersicht
+        </a>
+        <button ng-click="save()" type="button" class="btn btn-default btn-md">
+          <span ng-if="surveyModified" class="glyphicon glyphicon-floppy-save text-danger"></span>
+          <span ng-if="! surveyModified" class="glyphicon glyphicon-floppy-saved text-success"></span>
+          Speichern
+        </button>
+      </div>
+      <br/>
 
-      <form class="form-horizontal" role="form">
-        <div style="width: 800px;">
-            <a href="index.html"
-               class="btn btn-default btn-md">
-              <span class="glyphicon glyphicon-chevron-left"></span> Übersicht
-            </a>
-            <button ng-click="save()" type="button" class="btn btn-default btn-md">
-              <span ng-if="surveyModified" class="glyphicon glyphicon-floppy-save" style="color: red;"></span>
-              <span ng-if="! surveyModified" class="glyphicon glyphicon-floppy-saved" style="color: green;"></span>
-              Speichern
-          </button>
+      <div ng-repeat="category in questionData"  class="panel panel-default"  style="width: 800px;">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{category.category}}</h3>
         </div>
-        <br/>
 
-        <div ng-repeat="category in questionData"  class="panel panel-default"  style="width: 800px;">
-          <div class="panel-heading">
-            <h3 class="panel-title">{{category.category}}</h3>
-          </div>
-          <div class="panel-body">
-            <div ng-repeat="question in category.questions">
-              <div class="row"> <!-- the form -->
-                <div class="form-group">
-                  <label for="{{question.id}}" class="col-lg-4 control-label">{{question.title}}</label>
-                  
-                  <div ng-if="question.type == 'integer'" class="col-lg-2">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="{{question.id}}" ng-model="survey[question.id]"> 
-                      <span ng-if="question.unit" class="input-group-addon">{{question.unit}}</span>
-                    </div>
-                  </div>
- 
-                  <p ng-if="question.type == 'label'" class="col-lg-7"  style="overflow-wrap: break-word; word-break: break-all;">{{survey[question.id]}}</p>
-                  
-                  <div ng-if="question.type == 'string'" class="col-lg-5">
-                    <input type="text" class="form-control" id="{{question.id}}" ng-model="survey[question.id]">
-                  </div>
-                  
-                  <div ng-if="question.type == 'text'" class="col-lg-7">
-                    <textarea ng-if="question.type == 'text'" class="form-control" id="{{question.id}}" rows="3" ng-model="survey[question.id]"></textarea> 
-                  </div>
-                  
-                  <div ng-if="question.type == 'boolean'" class="col-lg-1">
-                    <input type="checkbox" class="form-control" id="{{question.id}}" ng-model="survey[question.id]"> 
-                  </div>
-                  
-                  <div ng-if="question.options" class="col-lg-3">
-                    <select class="form-control" id="{{question.id}}" ng-model="survey[question.id]" ng-options="key as value for (key , value) in question.options"> 
+        <div class="panel-body">
 
-                    </select>
-                  </div>
-
-                  <div ng-if="question.type != 'text' && question.type != 'string' && question.type != 'label'"
-                       contenteditable="true" class="bg-warning" style="min-height: 34px; width: 300px; padding: 3px; display: inline-block; overflow-wrap: break-word; word-wrap: break-word;"
-                       ng-model="survey.comments[question.id]"></div>
+          <form class="form-horizontal" role="form">
+            
+            <div class="form-group" ng-repeat="question in category.questions">
+              
+              <label for="{{question.id}}" class="col-lg-4 control-label">{{question.title}}
+                <span 
+                   ng-if="question.description" 
+                   class="glyphicon glyphicon-info-sign"
+                   data-container="body" data-toggle="popover" data-placement="left" 
+                   data-title="{{question.title}}" data-html="true" data-content="{{question.description}}"></span>
+              </label>
+              
+              <div ng-if="question.type == 'integer'" class="col-lg-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="{{question.id}}" ng-model="survey[question.id]"> 
+                  <span ng-if="question.unit" class="input-group-addon">{{question.unit}}</span>
                 </div>
-              </div>   
+              </div>
+              
+              <p ng-if="question.type == 'label'" class="col-lg-7"  style="overflow-wrap: break-word; word-break: break-all;">{{survey[question.id]}}</p>
+              
+              <div ng-if="question.type == 'string'" class="col-lg-5">
+                <input type="text" class="form-control" id="{{question.id}}" ng-model="survey[question.id]">
+              </div>
+              
+              <div ng-if="question.type == 'text'" class="col-lg-8">
+                <textarea ng-if="question.type == 'text'" class="form-control" id="{{question.id}}" rows="3" ng-model="survey[question.id]"></textarea> 
+              </div>
+              
+              <div ng-if="question.type == 'boolean'" class="col-lg-1">
+                <input type="checkbox" class="form-control" id="{{question.id}}" ng-model="survey[question.id]"> 
+              </div>
+              
+              <div ng-if="question.options" class="col-lg-3">
+                <select class="form-control" id="{{question.id}}" ng-model="survey[question.id]" ng-options="key as value for (key , value) in question.options">     
+                </select>
+              </div>
+              
+
+              <div ng-if="question.type == 'integer'" class="col-lg-6">
+                <div contenteditable="true" class="bg-warning" style="min-padding: 3px; min-height: 34px; overflow-wrap: break-word; word-wrap: break-word;"
+                     ng-model="survey.comments[question.id]"></div>
+              </div>
+
+              <div ng-if="question.type == 'boolean'" class="col-lg-7">
+                <div contenteditable="true" class="bg-warning" style="min-padding: 3px; min-height: 34px; overflow-wrap: break-word; word-wrap: break-word;"
+                     ng-model="survey.comments[question.id]"></div>
+              </div>
+
+              <div ng-if="question.options" class="col-lg-5">
+                <div contenteditable="true" class="bg-warning" style="min-padding: 3px; min-height: 34px; overflow-wrap: break-word; word-wrap: break-word;"
+                     ng-model="survey.comments[question.id]"></div>
+              </div>
+
             </div>
-          </div>
-        </div>
-      </form>
+          </form>
+        </div>   
+        
+        
+      </div>
     </div>
   </body>
 </html>

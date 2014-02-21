@@ -46,11 +46,13 @@ global_question_data = [
              {
                  'id' : 'locTotal',
                  'title' : 'LOC Produktivcode?',
+                 'description' :  'loc = ines of code.<br>Simple Ermitttlung der Brutto-Zeilenanzahl, <br>z.B. cat `find . -iname *.java` | wc -l',
                  'type' : 'integer'
              },
              {
                  'id' : 'locTests',
                  'title' : 'LOC Testcode?',
+                 'description' :  'loc = ines of code.<br>Simple Ermitttlung der Brutto-Zeilenanzahl, <br>z.B. cat `find . -iname *.java` | wc -l',
                  'type' : 'integer'
              }
          ]},
@@ -60,22 +62,26 @@ global_question_data = [
              {
                  'id' : 'utcc',
                  'title' : 'Unit-Test: Code Coverage?',
+                 'description' :  'Bei mehreren Teilprojekten einfach den Mittelwert oder besser noch den gewichteten Mittelwert nach Code-Zeilen.',
                  'type' : 'integer',
                  'unit' : '%',
              },
              {
                  'id' : 'utc',
                  'title' : 'Unit-Test: Anzahl Tests',
+                 'description' :  'Anzahl Tests sind die Methoden, nicht die Anzahl der Testklassen.',
                  'type' : 'integer'
              },
              {
                  'id' : 'utIgnored',
-                 'title' : 'Anzahl ignorierter/auskommentierter Unit-Tests',
+                 'title' : 'Anzahl ignorierter Unit-Tests',
+                 'description' :  'Ingnorierte oder auskommentierte Tests, die aktuell nicht mitlaufen.',
                  'type' : 'integer'
              },
              {
                  'id' : 'utgreenbuilds',
-                 'title' : 'Verh\u00E4ltnis rote zu gr\u00FCnen Builds?',
+                 'title' : 'Verh\u00E4ltnis gr\u00FCne zu roten Builds?',
+                 'description' :  'Berechnung: <br>100 * Anzahl der Gr\u00FCnen Builds / Anzahl der roten Builds.<br> Einfach im Jenkins z\u00E4hlen und rechnen.',
                  'unit' : '%',
                  'type' : 'integer'
              },
@@ -101,6 +107,7 @@ global_question_data = [
              {
                  'id' : 'openBugCount',
                  'title' : 'Anzahl offener Bugs?',
+                 'description' :  'Einfach die Gesamtzahl offener bugs, ohne Ber\u00FCcksichtigung der Kritikalit\u00E4ten.',
                  'type' : 'integer'
              },
              {
@@ -125,7 +132,8 @@ global_question_data = [
              },
              {
                  'id' : 'ittestIgnored',
-                 'title' : 'Anzahl aktuell ignorierter/auskommentierter Tests?',
+                 'title' : 'Anzahl ignorierter Tests?',
+                 'description': 'Gemeint sind Tests, die Auskommentiert sind oder anderweitig ignoriert werden',
                  'type' : 'integer'
              },
              {
@@ -161,12 +169,12 @@ global_question_data = [
              {
                  'id' : 'javadoc',
                  'title' : 'Ist der Code Dokumentiert (Javadoc)?',
-                 'options' : {0: 'minimal dokumentiert', 1: 'mittelm\u00E4ßig dokumentiert', 2: 'gut dokumentiert'}
+                 'options' : {0: 'minimal dokumentiert', 1: 'mittelm\u00E4\u00DFig dokumentiert', 2: 'gut dokumentiert'}
              },
              {
                  'id' : 'otherDoku',
                  'title' : 'Wie ist die \u00FCbergreifende Dokumentation?',
-                 'options' : {0: 'nicht vorhanden', 1: 'schlecht', 2: 'mittelm\u00E4ßig', 3: 'gut'}
+                 'options' : {0: 'nicht vorhanden', 1: 'schlecht', 2: 'mittelm\u00E4\u00DFig', 3: 'gut'}
              },
          ]},
 
@@ -175,6 +183,7 @@ global_question_data = [
              {
                  'id' : 'iterations',
                  'title' : 'Arbeitet das Team in kurzen Iterationen (z.B. Sprints)?',
+                 'description': 'Was eine Iteration kennzeichnet ist, dass am Ende jeder Iteration ein konsistentes und getestetes (Teil-)Produkt erstellt wird.',
                  'type' : 'boolean',
              },
              {

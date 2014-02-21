@@ -1,3 +1,10 @@
+$(function () {
+        $('body').popover({
+            selector: '[data-toggle="popover"]',
+            trigger: 'hover',
+        });
+    });
+
 var survey = angular.module('survey', []);
 
 survey.directive('contenteditable', function() {
