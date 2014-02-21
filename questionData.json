@@ -75,7 +75,7 @@ global_question_data = [
              },
              {
                  'id' : 'utgreenbuilds',
-                 'title' : 'Verhältnis rote zu grünen Builds?',
+                 'title' : 'Verh\u00E4ltnis rote zu gr\u00FCnen Builds?',
                  'unit' : '%',
                  'type' : 'integer'
              },
@@ -115,12 +115,12 @@ global_question_data = [
              },
              {
                  'id' : 'itc',
-                 'title' : 'Anzahl automatisierter Testfälle?',
+                 'title' : 'Anzahl automatisierter Testf\u00E4lle?',
                  'type' : 'integer'
              },
              {
                  'id' : 'ittestruns',
-                 'title' : 'Anzahl Testläufe pro Woche?',
+                 'title' : 'Anzahl Testl\u00E4ufe pro Woche?',
                  'type' : 'integer'
              },
              {
@@ -161,12 +161,12 @@ global_question_data = [
              {
                  'id' : 'javadoc',
                  'title' : 'Ist der Code Dokumentiert (Javadoc)?',
-                 'options' : {0: 'minimal dokumentiert', 1: 'mittelmäßig dokumentiert', 2: 'gut dokumentiert'}
+                 'options' : {0: 'minimal dokumentiert', 1: 'mittelm\u00E4ßig dokumentiert', 2: 'gut dokumentiert'}
              },
              {
                  'id' : 'otherDoku',
-                 'title' : 'Wie ist die übergreifende Dokumentation?',
-                 'options' : {0: 'nicht vorhanden', 1: 'schlecht', 2: 'mittelmäßig', 3: 'gut'}
+                 'title' : 'Wie ist die \u00FCbergreifende Dokumentation?',
+                 'options' : {0: 'nicht vorhanden', 1: 'schlecht', 2: 'mittelm\u00E4ßig', 3: 'gut'}
              },
          ]},
 
@@ -179,7 +179,7 @@ global_question_data = [
              },
              {
                  'id' : 'iterationsAcceptanceCriterias',
-                 'title' : 'Gibt es klare Abnahmekriterien für die Iterationen?',
+                 'title' : 'Gibt es klare Abnahmekriterien f\u00FCr die Iterationen?',
                  'type' : 'boolean',
              },
              {
@@ -194,7 +194,7 @@ global_question_data = [
              },
              {
                  'id' : 'retros',
-                 'title' : 'Macht das Team regelmäßige Retros?',
+                 'title' : 'Macht das Team regelm\u00E4\u00DFige Retros?',
                  'type' : 'boolean'
              },
              {

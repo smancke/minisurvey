@@ -1,7 +1,30 @@
 var survey = angular.module('survey', []);
 
+survey.directive('contenteditable', function() {
+
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            
+            // model -> view
+            ctrl.$render = function() {
+                elm.text(ctrl.$viewValue);
+            };
+
+            /**
+             * handling the maxlength parameter
+             */
+            elm.on('keypress', function(event) {
+                scope.$apply(function() {
+                    ctrl.$setViewValue(elm.html());
+                });
+            });
+        }
+    }
+});
+
 survey.controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.surveys =  {};
+    $scope.surveys =  { };
 
     $http.get('survey_api.php')
         .success(function(data, status, headers, config) {
@@ -12,7 +35,7 @@ survey.controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
 survey.controller('SurveyCtrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.surveyModified = false;
-    $scope.survey =  {};
+    $scope.survey =  {'comments':{} };
     $scope.ignoreNextWatch = false;
 
     $scope.loadUri = function(uri) {

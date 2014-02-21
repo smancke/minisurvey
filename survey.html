@@ -38,7 +38,7 @@
           </div>
           <div class="panel-body">
             <div ng-repeat="question in category.questions">
-              <div class="row">
+              <div class="row"> <!-- the form -->
                 <div class="form-group">
                   <label for="{{question.id}}" class="col-lg-4 control-label">{{question.title}}</label>
                   
@@ -59,7 +59,7 @@
                     <textarea ng-if="question.type == 'text'" class="form-control" id="{{question.id}}" rows="3" ng-model="survey[question.id]"></textarea> 
                   </div>
                   
-                  <div ng-if="question.type == 'boolean'" class="col-lg-5">
+                  <div ng-if="question.type == 'boolean'" class="col-lg-1">
                     <input type="checkbox" class="form-control" id="{{question.id}}" ng-model="survey[question.id]"> 
                   </div>
                   
@@ -68,8 +68,12 @@
 
                     </select>
                   </div>
+
+                  <div ng-if="question.type != 'text' && question.type != 'string' && question.type != 'label'"
+                       contenteditable="true" class="bg-warning" style="min-height: 34px; width: 300px; padding: 3px; display: inline-block; overflow-wrap: break-word; word-wrap: break-word;"
+                       ng-model="survey.comments[question.id]"></div>
                 </div>
-              </div>
+              </div>   
             </div>
           </div>
         </div>
