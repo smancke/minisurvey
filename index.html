@@ -35,7 +35,7 @@
         <thead>
           <tr>
             <th></th>
-            <th>Projekt ID</th>
+            <th>Kunde</th>
             <th>Projektname</th>
             <th>Erhebungsdatum</th>
           </tr>
@@ -43,8 +43,8 @@
         <tbody>
           <tr ng-repeat="survey in surveys">
             <td><a href="survey.html?surveyuri={{survey.surveyURI}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            <td><a href="survey.html?surveyuri={{survey.surveyURI}}">{{survey.customer}}</a></td>
-            <td><a href="survey.html?surveyuri={{survey.surveyURI}}">{{survey.projectName}}</a></td>
+            <td>{{survey.customer}}</td>
+            <td>{{survey.projectName}}</td>
             <td>{{survey.date}}</td>
           </tr>
         </tbody>

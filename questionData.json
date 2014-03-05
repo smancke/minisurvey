@@ -223,7 +223,7 @@ global_question_data = [
              {
                  'id' : 'technicalDept',
                  'title' : 'Wie hoch ist der technical debt?',
-                 'options' : {0: 'sehr hoch', 1: 'mittel', 2: 'gering'},
+                 'options' : {0: 'sehr hoch', 1: 'hoch', 2: 'mittel', 3: 'gering'},
              },
              {
                  'id' : 'technicalDeptReduce',
